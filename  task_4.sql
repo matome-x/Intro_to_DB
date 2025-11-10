@@ -1,6 +1,4 @@
--- Print full description of the 'books' table
-USE alx_book_store;
-
+-- Print full description of the 'Books' table in alx_book_store
 SELECT 
     COLUMN_NAME AS `Column`,
     COLUMN_TYPE AS `Type`,
@@ -11,7 +9,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.COLUMNS
 WHERE 
-    TABLE_SCHEMA = DATABASE()  
+    TABLE_SCHEMA = 'alx_book_store'  -- explicit database name
     AND TABLE_NAME = 'Books'
 ORDER BY 
     ORDINAL_POSITION;
