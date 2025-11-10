@@ -9,7 +9,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.COLUMNS
 WHERE 
-    TABLE_SCHEMA = 'alx_book_store'  -- explicit database name
+    TABLE_SCHEMA = 'alx_book_store'  
     AND TABLE_NAME = 'Books'
 ORDER BY 
     ORDINAL_POSITION;
