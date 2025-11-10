@@ -1,13 +1,15 @@
-
 import mysql.connector
 from mysql.connector import Error
 
 def create_database():
+    connection = None
+    cursor = None
+
     try:
         # Connect to MySQL Server (update credentials if needed)
         connection = mysql.connector.connect(
             host='localhost',
-            user='root',
+            user='Matt',         
             password='Ge10095664#'  
         )
 
@@ -16,16 +18,15 @@ def create_database():
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
             print("Database 'alx_book_store' created successfully!")
 
-    except Error as e:
+    except mysql.connector.Error as e:
         print(f"Error while connecting to MySQL: {e}")
 
     finally:
-        # Close cursor and connection properly
-        if connection.is_connected():
+        # Safely close cursor and connection if they exist
+        if cursor is not None:
             cursor.close()
+        if connection is not None and connection.is_connected():
             connection.close()
-            # Optional message for clarity
-            # print("MySQL connection is closed")
 
 if __name__ == "__main__":
     create_database()
